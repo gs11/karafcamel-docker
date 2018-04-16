@@ -1,7 +1,7 @@
 FROM java:8-jdk
 MAINTAINER gs11
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
-ENV KARAF_VERSION=4.1.2
+ENV KARAF_VERSION=4.2.0
 
 RUN groupadd -r karaf -g 1000; \
     useradd -u 1000 -r -g karaf -m -c "Apache Karaf user" karaf

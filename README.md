@@ -22,7 +22,7 @@ Run
 ```bash
 docker run -d -t \
   --name karafcamel \
-  -p 8101:8101 \
+  -p 8181:8181 \
   -v /host/path/deploy:/deploy \
   karafcamel
 ```
