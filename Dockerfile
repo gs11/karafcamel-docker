@@ -1,13 +1,14 @@
-FROM java:8-jdk
+FROM openjdk:8-jdk-alpine
 MAINTAINER gs11
-ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
 ENV KARAF_VERSION=4.1.5
+
+RUN apk add --no-cache shadow
 
 RUN groupadd -r karaf -g 1000; \
     useradd -u 1000 -r -g karaf -m -c "Apache Karaf user" karaf
 
 RUN wget http://www-eu.apache.org/dist/karaf/${KARAF_VERSION}/apache-karaf-${KARAF_VERSION}.tar.gz; \
-	mkdir /opt/karaf; \
+	mkdir -p /opt/karaf; \
 	tar --strip-components=1 -C /opt/karaf -xzf apache-karaf-${KARAF_VERSION}.tar.gz; \
 	rm apache-karaf-${KARAF_VERSION}.tar.gz; \
 	mkdir /deploy
