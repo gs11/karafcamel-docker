@@ -5,8 +5,8 @@ Description
 -----------
 Containerized from the Apache distribution
 - Running as separate user "karaf"
-- karaf user password read from separate file upon build
-- Autoinstallation of various Camel component
+- karaf user password is set upon container creation
+- Autoinstallation of various Camel components
 - Autoinstallation of Hawtio
 
 Build
@@ -24,5 +24,8 @@ docker run -d -t \
   --name karafcamel \
   -p 8181:8181 \
   -v /host/path/deploy:/deploy \
+  -e KARAFPASSWORD=mypassword
   karafcamel
 ```
+
+Default password is "karaf" if KARAFPASSWORD environment variable is omitted

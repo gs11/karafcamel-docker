@@ -12,12 +12,10 @@ RUN wget http://www-eu.apache.org/dist/karaf/${KARAF_VERSION}/apache-karaf-${KAR
 	rm apache-karaf-${KARAF_VERSION}.tar.gz; \
 	mkdir /deploy
 
-COPY karafpassword /tmp/
 COPY org.apache.karaf.features.cfg /opt/karaf/etc/
+COPY karaf-entrypoint.sh /opt/karaf/bin/
 
-RUN sed -i -e "s/= karaf/= $(cat /tmp/karafpassword)/" /opt/karaf/etc/users.properties; \
-    sed -i 's/^\(felix\.fileinstall\.dir\s*=\s*\).*$/\1\/deploy/' /opt/karaf/etc/org.apache.felix.fileinstall-deploy.cfg; \
-	rm /tmp/karafpassword
+RUN sed -i 's/^\(felix\.fileinstall\.dir\s*=\s*\).*$/\1\/deploy/' /opt/karaf/etc/org.apache.felix.fileinstall-deploy.cfg
 
 RUN chown -R karaf:karaf /opt/karaf
 
@@ -26,6 +24,6 @@ USER karaf
 VOLUME ["/deploy"]
 #EXPOSE 1099 8101 8181 44444
 EXPOSE 8181
-ENTRYPOINT ["/opt/karaf/bin/karaf"]
+ENTRYPOINT ["/opt/karaf/bin/karaf-entrypoint.sh"]
 
 WORKDIR /opt/karaf
