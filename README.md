@@ -7,6 +7,7 @@ Containerized from the Apache distribution
 - Running as separate user "karaf"
 - karaf user password is set upon container creation
 - Autoinstallation of various Camel components
+- Autoinstallation of ActiveMQ Broker
 - Autoinstallation of Hawtio
 
 Build
