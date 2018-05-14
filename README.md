@@ -6,14 +6,13 @@ Description
 Containerized from the Apache distribution
 - Running as separate user "karaf"
 - karaf user password is set upon container creation
+- karaf maven proxy is set upon container creation
 - Autoinstallation of various Camel components
 - Autoinstallation of ActiveMQ Broker
 - Autoinstallation of Hawtio
 
 Build
 -----
-
-Edit karafpassword and change the password (if needed) prior to building
 
 ```sudo docker build -t karafcamel .```
 
@@ -22,11 +21,15 @@ Run
 
 ```bash
 docker run -d -t \
+  --net="host"
   --name karafcamel \
   -p 8181:8181 \
   -v /host/path/deploy:/deploy \
   -e KARAFPASSWORD=mypassword \
+  -e MAVENPROXYHOST=myproxyhost \
+  -e MAVENPROXYPORT=myproxyport
   karafcamel
 ```
 
-Default password is "karaf" if KARAFPASSWORD environment variable is omitted
+Default password is "karaf" if KARAFPASSWORD environment variable is omitted.
+Default is that no proxy is configured if those environment variables are omitted.
