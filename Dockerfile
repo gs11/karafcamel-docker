@@ -7,7 +7,7 @@ RUN apk add --no-cache shadow
 RUN groupadd -r karaf -g 1000; \
     useradd -u 1000 -r -g karaf -m -c "Apache Karaf user" karaf
 
-RUN wget http://www-eu.apache.org/dist/karaf/${KARAF_VERSION}/apache-karaf-${KARAF_VERSION}.tar.gz; \
+RUN wget http://apache.mirrors.spacedump.net/karaf/${KARAF_VERSION}/apache-karaf-${KARAF_VERSION}.tar.gz; \
 	mkdir -p /opt/karaf; \
 	tar --strip-components=1 -C /opt/karaf -xzf apache-karaf-${KARAF_VERSION}.tar.gz; \
 	rm apache-karaf-${KARAF_VERSION}.tar.gz; \
