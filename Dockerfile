@@ -25,6 +25,7 @@ RUN chown -R karaf:karaf /opt/karaf
 USER karaf
 
 VOLUME ["/deploy"]
+VOLUME ["/opt/karaf/data/amq-broker"]
 #EXPOSE 1099 8101 8181 44444
 EXPOSE 8181
 ENTRYPOINT ["/opt/karaf/bin/karaf-entrypoint.sh"]
