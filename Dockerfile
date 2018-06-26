@@ -16,6 +16,7 @@ RUN wget http://apache.mirrors.spacedump.net/karaf/${KARAF_VERSION}/apache-karaf
 COPY org.apache.karaf.features.cfg /opt/karaf/etc/
 COPY karaf-entrypoint.sh /opt/karaf/bin/
 COPY maven-settings.xml /opt/karaf/etc/
+COPY activemq.xml /opt/karaf/etc/
 
 RUN sed -i 's/^\(felix\.fileinstall\.dir\s*=\s*\).*$/\1\/deploy/' /opt/karaf/etc/org.apache.felix.fileinstall-deploy.cfg
 

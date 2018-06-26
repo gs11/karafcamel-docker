@@ -10,6 +10,7 @@ Containerized from the Apache distribution
 - Autoinstallation of various Camel components
 - Autoinstallation of ActiveMQ Broker
 - Autoinstallation of Hawtio
+- ActiveMQ configured with producerFlowControl set to false for queues
 
 Build
 -----
